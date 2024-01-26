@@ -6,6 +6,9 @@ import {
 } from "react-native-responsive-screen";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
+import { TouchableOpacity } from "react-native";
+import Animated,{ FadeIn, FadeInDown, FadeOut } from 'react-native-reanimated';
+
 
 export default function Index() {
     return (
@@ -23,10 +26,21 @@ export default function Index() {
                 end={{ x: 0.5, y: 0.8 }}
                 className="flex justify-end space-y-8 pd-12"
             >
-                <View className="flex items-center">
-            <Text className="pb-12 text-3xl font-bold text-white">Best <Text className="text-red-500">Fitness App</Text></Text>
-                </View>
-                
+                <Animated.View entering={FadeInDown.delay(100).springify()} className="flex items-center pb-4">
+                    <Text style={{fontSize: hp(5)}} className="font-bold tracking-wide text-white ">Best
+                        <Text className="text-red-700"> Fitness</Text>
+                    </Text>
+                    <Text style={{fontSize: hp(5)}} className="font-bold tracking-wide text-white ">For You
+                    </Text>
+                </Animated.View>
+                <Animated.View entering={FadeInDown.delay(200).springify()} className="pb-1">
+                    <TouchableOpacity
+                    style={{height: hp(7), width: wp(80)}}
+                    className="items-center justify-center mx-auto bg-red-700 border-[2px] border-white rounded-full">
+                        <Text style={{fontSize: hp(3)}} className="font-bold tracking-wide text-white ">Get Started</Text>
+                    </TouchableOpacity>
+                </Animated.View>
+
             </LinearGradient>
         </View>
     );
